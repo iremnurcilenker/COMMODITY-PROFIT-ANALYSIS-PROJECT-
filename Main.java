@@ -53,15 +53,21 @@ public class Main {
         if(from<0 || from>28 || to<0 || to>28 || from>to ){
             return -99999;
         }
-        for(String s:commodities){
-            if(s.equals(commodity)){
+        int cc=0;
+        for(int i=0;i<COMMS;i++) {
+            if (commodities[i].equals(commodity)) {
+                cc=i;
                 break;
+            } else {
+                return -99999;
             }
-            else{
-            return -99999;
+        }
+        int totalProfit=0;
+        for(int i=from;i<to;i++){
+            totalProfit+=profits[5][i][cc];
         }
 
-            return 1234;
+            return totalProfit;
         }
 
 
