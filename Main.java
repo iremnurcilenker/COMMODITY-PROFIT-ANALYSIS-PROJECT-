@@ -53,82 +53,65 @@ public class Main {
         if(from<0 || from>28 || to<0 || to>28 || from>to ){
             return -99999;
         }
-        int cc=0;
-        for(int i=0;i<COMMS;i++) {
-            if (commodities[i].equals(commodity)) {
-                cc=i;
+        for(String s:commodities){
+            if(s.equals(commodity)){
                 break;
-            } else {
-                return -99999;
             }
-        }
-        int totalProfit=0;
-        for(int i=from;i<to;i++){
-            totalProfit+=profits[5][i][cc];
+            else{
+            return -99999;
         }
 
-            return totalProfit;
+            return 1234;
         }
 
 
     public static int totalProfitOnDay(int month, int day) {
-        if (month < 0 || month > 11 || day < 1 || day > 27) {
+        if (month < 0 || month > 12 || day < 1 || day > 28) {
             return -99999;
         }
+        int dayIndex = day - 1; //???????????
         int total = 0;
         for(int c=0; c<COMMS; c++){
-            total +=profits[month][day][c];
+            total +=profits[MONTHS][DAYS][COMMS];
         }
 
         return total;
     }
 
     public static int bestDayOfMonth(int month) {
-        if (month < 0 || month >= 12) {
+        if(month<0 || month>=12){
             return -1;
-        }
-        int bestDay = 0;
-        int maxProfit = 0;
-        for (int d = 0; d < 28; d++) {
-            int total = 0;
-            for (int c = 0; c < 5; c++) {
-                total += profits[month][d][c];
+
+            int bestDay = 0;
+            int maxProfit =0;
+            for(int d = 0; d<28; d++){
+                int total =0;
+                for(int c =0; c<5; c++){
+                    total +=profits[MONTHS][DAYS][COMMS];
+                }
+                if(total>maxProfit){
+                    maxProfit = total;
+                }
             }
-            if (total > maxProfit) {
-                maxProfit = total;
-            }
         }
-        return bestDay;
+        return total;
     }
 
     public static String bestMonthForCommodity(String comm) {
-        int cc=0;
-        for(int i=0;i<COMMS;i++) {
-            if (commodities[i].equals(comm)) {
-                cc=i;
-                break;
-            } else {
-                return "INVALID_COMMUDITY";
-            }
+        if(comm<0 || comm>=5){
+            return "INVALID_COMMODITY"
         }
+
         int bestMonth = 0;
-        int month=0;
+        for(int c = 0; c<COMMS; c++){
+            int totalComm = 0;
 
-
-            for(int m = 0; m<MONTHS; m++){
-                int totalComm = 0;
-                for (int d=0;d<DAYS;d++){
-                    totalComm += profits[m][d][cc];
-                }
-                if(totalComm>bestMonth){
-                    bestMonth=totalComm;
-                    month=m;
-                }
-
+            if(int m = 0; m<MONTHS; m++){
+                totalComm += profits[MONTHS][DAYS][COMMS];
             }
-
-
-        return months[month];
+            if()
+        }
+        return "DUMMY";
     }
 
     public static int consecutiveLossDays(String comm) {
