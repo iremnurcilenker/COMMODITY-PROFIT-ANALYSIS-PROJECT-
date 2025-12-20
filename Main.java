@@ -49,7 +49,7 @@ public class Main {
                 sc.close();
 
             } catch (Exception e) {
-                System.out.println("Dosya okunamadı: " + fileName);
+                System.out.println("File could not be read: " + fileName);
             }
         }
     }
@@ -106,7 +106,7 @@ public class Main {
 
 
     public static int totalProfitOnDay(int month, int day) {
-        if (month < 0 || month > 11 || day < 1 || day > 27) {
+        if (month < 0 || month > 11 || day < 0 || day > 27) {
             return -99999;
         }
         int total = 0;
