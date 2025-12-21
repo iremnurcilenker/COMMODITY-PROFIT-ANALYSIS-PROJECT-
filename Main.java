@@ -130,6 +130,7 @@ public class Main {
                 }
                 if(total>maxProfit){
                     maxProfit = total;
+                    bestDay=d;
                 }
             }
         return bestDay+1;
